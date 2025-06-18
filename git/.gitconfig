@@ -1,0 +1,50 @@
+[user]
+	name = Skylar
+	email = hi@skylar.wtf
+	signingkey = D446051236B7D4A5
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[push]
+    default = tracking
+[core]
+    excludesfile = ~/.gitignore
+[init]
+	defaultBranch = main
+[alias]
+	update = "pull origin master --rebase"
+	fresh = "switch --orphan"
+	fpush = "push --force"
+    s = "status -s"
+    undo = "reset --soft HEAD^"
+    cleanup = "!f() { \
+        git fetch upstream; \
+        git checkout master; \
+        git pull upstream master; \
+        git push origin master; \
+        git branch -r --merged | grep -v master | grep origin | sed 's/origin\\///' | gxargs -r -n 1 git push --delete origin; \
+        git branch --merged | grep -v master | gxargs -r -n 1 git branch -d; \
+        git branch -vv | grep ': gone]'|  grep -v '\\*' | awk '{ print $1; }' | gxargs -r git branch -D; \
+        git fetch --all --prune; \
+        git prune; \
+        git gc --aggressive; \
+    }; f"
+    wopsy = "commit -a --amend --no-edit"
+    update = "pull origin main --rebase"
+    ri = "pull origin main --rebase=interactive"
+[submodule]
+	recurse = true
+[rebase]
+    autoStash = true
+[credential "https://github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper = !/opt/homebrew/bin/gh auth git-credential
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[gpg]
+	program = gpg
