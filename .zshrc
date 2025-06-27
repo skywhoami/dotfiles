@@ -67,7 +67,6 @@ docker_rm_stopped() {
   docker rm $(docker ps -a -q)
 }
 
-eval $(thefuck --alias)
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
