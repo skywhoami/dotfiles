@@ -2,3 +2,5 @@ README.md
 .idea
 update_brewfile.sh
 .git
+.osx
+install.sh
