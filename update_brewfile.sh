@@ -1,2 +1,1 @@
-rm -f ./Brewfile
-brew bundle dump --force --file=./Brewfile
+brew bundle dump --file=./Brewfile --force

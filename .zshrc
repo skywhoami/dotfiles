@@ -4,7 +4,7 @@ export HOMEBREW_NO_ANALYTICS=1
 
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
-if [[ -f "/opt/homebrew/bin/brew" ]] then
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -14,22 +14,19 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
-else
-	export EDITOR='nvim'
-fi
-
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/omp.yaml)"
+  if [[ -f "$XDG_CONFIG_HOME/omp.yaml" ]]; then
+    eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/omp.yaml)"
+  fi
 fi
 
-source /opt/homebrew/opt/zinit/zinit.zsh
+source $(brew --prefix)/opt/zinit/zinit.zsh
 
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
+zinit wait lucid for \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-completions \
+  zsh-users/zsh-autosuggestions \
+  Aloxaf/fzf-tab
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -38,7 +35,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-alias c="$EDITOR"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -rfv"
