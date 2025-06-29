@@ -1,0 +1,109 @@
+disableStartupPopups: true
+promptToReturnFromSubprocess: false
+notARepository: 'skip'
+gui:
+  scrollHeight: 4
+  scrollPastBottom: false
+  commitLength:
+    show: true
+  mouseEvents: false
+  skipDiscardChangeWarning: true
+  showFileTree: true
+  showIcons: false
+  showBottomLine: false
+refresher:
+  refreshInterval: 60
+git:
+  autoFetch: true
+  pull:
+    mode: 'rebase'
+  paging:
+    colorArg: always
+    useConfig: true
+update:
+  method: never
+confirmOnQuit: true
+quitOnTopLevelReturn: false
+keybinding:
+  universal:
+    toggleRangeSelect: 'V'
+    quit: 'q'
+    return: '<esc>'
+    quitWithoutChangingDirectory: 'Q'
+    togglePanel: '<tab>'
+    prevItem: '<up>'
+    nextItem: '<down>'
+    prevItem-alt: 'k'
+    nextItem-alt: 'j'
+    prevBlock: '<left>'
+    nextBlock: '<right>'
+    prevBlock-alt: 'h'
+    nextBlock-alt: 'l'
+    select: '<space>'
+    goInto: '<enter>'
+    remove: 'd'
+    new: 'n'
+    edit: 'e'
+    openFile: 'o'
+    scrollUpMain: 'K'
+    scrollDownMain: 'J'
+    executeShellCommand: 'X'
+    createRebaseOptionsMenu: 'M'
+    pushFiles: 'P'
+    pullFiles: 'p'
+    refresh: '<c-r>'
+    createPatchOptionsMenu: '<c-p>'
+    nextTab: ']'
+    prevTab: '['
+  status:
+    checkForUpdate: 'u'
+    recentRepos: '<space>'
+  files:
+    commitChanges: 'c'
+    commitChangesWithoutHook: 'w'
+    amendLastCommit: 'a'
+    commitChangesWithEditor: 'C'
+    ignoreFile: 'i'
+    refreshFiles: 'p'
+    stashAllChanges: 's'
+    viewStashOptions: 'S'
+    toggleStagedAll: '<c-a>'
+    viewResetOptions: 'D'
+    fetch: 'f'
+  branches:
+    createPullRequest: 'o'
+    checkoutBranchByName: 'c'
+    forceCheckoutBranch: 'F'
+    rebaseBranch: 'R'
+    mergeIntoCurrentBranch: 'm'
+    viewGitFlowOptions: 'i'
+    fastForward: 'f'
+    pushTag: 'P'
+    setUpstream: 'u'
+    fetchRemote: 'f'
+  commits:
+    squashDown: 's'
+    renameCommit: 'E'
+    renameCommitWithEditor: 'e'
+    viewResetOptions: 'r'
+    markCommitAsFixup: 'f'
+    createFixupCommit: 'F'
+    squashAboveCommits: 'S'
+    moveDownCommit: '<c-j>'
+    moveUpCommit: '<c-k>'
+    amendToCommit: 'a'
+    pickCommit: 'p'
+    revertCommit: 'u'
+    cherryPickCopy: 'c'
+    cherryPickCopyRange: 'C'
+    pasteCommits: 'v'
+    tagCommit: 'T'
+    toggleDiffCommit: 'i'
+    checkoutCommit: '<space>'
+  stash:
+    popStash: 'g'
+  commitFiles:
+    checkoutCommitFile: 'c'
+    toggleSelectHunk: 'a'
+    pickBothHunks: 'b'
+    undo: 'z'
