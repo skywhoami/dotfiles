@@ -1,19 +1,13 @@
 let mapleader = " "
 
 set hlsearch
-set relativenumber
-set number relativenumber
 set incsearch
 set ignorecase
 set smartcase
-set noshowmatch
-set hidden
-set noerrorbells
-set linebreak
 
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
+set number
+set relativenumber
+set linebreak
 
 set noswapfile
 set nobackup
@@ -22,9 +16,24 @@ set undofile
 
 set so=4
 
-filetype off
+set expandtab
+set tabstop=2 softtabstop=2
+set shiftwidth=2
+
+set hidden
+set noerrorbells
+set mouse="a"
+
 syntax on
-
-set mouse=""
-
+filetype plugin indent on
 set updatetime=500
+
+inoremap <Esc> <Esc> " for some reason when i was hitting Esc in insert it wasn't doing anything
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
+nnoremap <leader>e :Ex<CR>
+
+nnoremap ]d <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap [d <cmd>lua vim.diagnostic.goto_prev()<CR>
