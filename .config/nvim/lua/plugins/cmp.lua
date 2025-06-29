@@ -28,12 +28,32 @@ return {
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
       },
 
-      sources = {
+      sources = cmp.config.sources({
         { name = "copilot" },
-        { name = "nvim_lsp" },
+        {
+          name = "nvim_lsp",
+          ---@param entry cmp.Entry
+          ---@param ctx cmp.Context
+          entry_filter = function(entry, ctx)
+            -- Check if the buffer type is 'vue'
+            if ctx.filetype ~= "vue" then
+              return true
+            end
+
+            local cursor_before_line = ctx.cursor_before_line
+            if cursor_before_line:sub(-1) == "@" then
+              return entry.completion_item.label:match("^@")
+            elseif cursor_before_line:sub(-1) == ":" then
+              return entry.completion_item.label:match("^:")
+                and not entry.completion_item.label:match("^:on%-")
+            else
+              return true
+            end
+          end,
+        },
         { name = "buffer" },
         { name = "path" },
-      },
+      }),
 
       formatting = {
         format = function(entry, item)
@@ -47,5 +67,10 @@ return {
         end,
       },
     })
+
+    cmp.event:on("menu_closed", function()
+      local bufnr = vim.api.nvim_get_current_buf()
+      vim.b[bufnr]._vue_ts_cached_is_in_start_tag = nil
+    end)
   end,
 }

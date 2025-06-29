@@ -33,7 +33,7 @@ return {
         focusable = false,
         style = "minimal",
         border = "rounded",
-        source = "always",
+        source = 'if_many',
         header = "",
         prefix = "",
       },
@@ -43,8 +43,7 @@ return {
       settings = {
         yaml = {
           schemas = {
-            ["https://www.schemastore.org/github-workflow.json"] = ".github/workflows/*.yml",
-            ["https://www.schemastore.org/github-workflow.json"] = ".github/workflows/*.yaml",
+            ["https://www.schemastore.org/github-workflow.json"] = ".github/workflows/*",
             ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.{yml,yaml}",
           },
         },
@@ -67,5 +66,27 @@ return {
         },
       },
     })
+
+    lspconfig["lua_ls"].setup({
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false,
+          },
+          telemetry = {
+            enable = false,
+          },
+        },
+      },
+    })
+
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
   end,
 }

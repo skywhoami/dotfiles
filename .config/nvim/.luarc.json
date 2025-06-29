@@ -1,0 +1,14 @@
+{
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "diagnostics": {
+    "globals": ["vim"]
+  },
+  "workspace": {
+    "library": [
+      "/opt/homebrew/Cellar/neovim/0.11.2/share/nvim/runtime"
+    ],
+    "checkThirdParty": false
+  }
+}
