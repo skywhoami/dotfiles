@@ -10,10 +10,6 @@ return {
 
     cmp.setup({
       mapping = {
-        ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-        ["j"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ["k"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 
@@ -35,7 +31,6 @@ return {
           ---@param entry cmp.Entry
           ---@param ctx cmp.Context
           entry_filter = function(entry, ctx)
-            -- Check if the buffer type is 'vue'
             if ctx.filetype ~= "vue" then
               return true
             end

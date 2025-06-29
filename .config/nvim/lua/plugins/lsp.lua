@@ -33,7 +33,7 @@ return {
         focusable = false,
         style = "minimal",
         border = "rounded",
-        source = 'if_many',
+        source = "if_many",
         header = "",
         prefix = "",
       },
