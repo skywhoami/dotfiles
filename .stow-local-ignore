@@ -4,3 +4,4 @@ update_brewfile.sh
 .git
 .osx
 install.sh
+.DS_Store
