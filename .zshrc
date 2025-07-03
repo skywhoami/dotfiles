@@ -20,6 +20,12 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   fi
 fi
 
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR="vim"
+else
+  export EDITOR="nvim"
+fi
+
 source $(brew --prefix)/opt/zinit/zinit.zsh
 
 zinit wait lucid for \
