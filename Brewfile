@@ -40,6 +40,5 @@ mas "Refined GitHub", id: 1519867270
 mas "SponsorBlock", id: 1573461917
 mas "TestFlight", id: 899247664
 mas "Userscripts", id: 1463298887
-mas "Wappalyzer - Technology profiler", id: 1520333300
 mas "WhatsApp", id: 310633997
 mas "Wipr", id: 1662217862
