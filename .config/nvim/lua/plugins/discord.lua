@@ -1,10 +1,10 @@
 return {
   "vyfor/cord.nvim",
-  build = ':Cord update',
+  build = ":Cord update",
   opts = {
     display = {
       theme = "catppuccin",
-      flavor = "accent"
-    }
+      flavor = "accent",
+    },
   },
 }

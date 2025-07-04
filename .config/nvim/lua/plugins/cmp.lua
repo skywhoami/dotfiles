@@ -23,7 +23,6 @@ return {
       },
 
       sources = cmp.config.sources({
-        { name = "copilot" },
         {
           name = "nvim_lsp",
           ---@param entry cmp.Entry
@@ -54,7 +53,6 @@ return {
             nvim_lsp = "[LSP]",
             buffer = "[Buffer]",
             path = "[Path]",
-            copilot = "[Copilot]",
           })[entry.source.name]
           return item
         end,
