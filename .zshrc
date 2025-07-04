@@ -8,6 +8,8 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+export EDITOR="nvim"
+
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
@@ -18,12 +20,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   if [[ -f "$XDG_CONFIG_HOME/omp.yaml" ]]; then
     eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/omp.yaml)"
   fi
-fi
-
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="vim"
-else
-  export EDITOR="nvim"
 fi
 
 source $(brew --prefix)/opt/zinit/zinit.zsh
@@ -56,19 +52,6 @@ alias g="git"
 alias lg="lazygit"
 
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --ansi --preview-window=right:60% --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
-
-ssh () {
-	local ps_res
-	ps_res=$(ps -p $(ps -p $$ -o ppid= | xargs) -o comm=)
-
-	if [ "$ps_res" = "tmux" ]; then
-		tmux rename-window "ssh:$(echo $argv | cut -d . -f 1)"
-		command ssh $argv
-		tmux set-window-option automatic-rename "on" >/dev/null
-	else
-		command ssh $argv
-	fi
-}
 
 docker_rm_stopped() {
   docker rm $(docker ps -a -q)
