@@ -87,6 +87,17 @@ return {
       },
     })
 
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = "rounded",
+      max_width = 80,
+    })
+
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+    vim.keymap.set(
+      "n",
+      "K",
+      vim.lsp.buf.hover,
+      { noremap = true, silent = true, desc = "LSP Hover Documentation" }
+    )
   end,
 }
