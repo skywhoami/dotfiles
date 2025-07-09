@@ -2,7 +2,6 @@ tap "jandedobbeleer/oh-my-posh"
 tap "jesseduffield/lazygit"
 tap "oven-sh/bun"
 brew "bat"
-brew "cloudflared"
 brew "colima", restart_service: :changed
 brew "docker"
 brew "docker-compose"
@@ -39,6 +38,5 @@ mas "1Password for Safari", id: 1569813296
 mas "Refined GitHub", id: 1519867270
 mas "SponsorBlock", id: 1573461917
 mas "TestFlight", id: 899247664
-mas "Userscripts", id: 1463298887
 mas "WhatsApp", id: 310633997
 mas "Wipr", id: 1662217862
