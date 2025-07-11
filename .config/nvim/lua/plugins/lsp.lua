@@ -12,15 +12,15 @@ return {
     mason.setup()
     mason_lsp.setup({
       ensure_installed = {
-        "dockerfile-language-server",
+        "dockerls",
+        "docker_compose_language_service",
         "vtsls",
-        "vue-language-server",
-        "bash-language-server",
-        "css-lsp",
-        "docker-compose-language-service",
-        "json-lsp",
-        "lua-language-server",
-        "yaml-language-server",
+        "vue_ls",
+        "bashls",
+        "cssls",
+        "jsonls",
+        "lua_ls",
+        "yamlls",
       },
     })
 
