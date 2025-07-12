@@ -1,16 +1,19 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
-# Stop Time Machine from asking to use new drives as backup targets
+# Stop Time Machine from suggesting new disks for backup
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# Hide the "Recent Applications" section in the Dock
+# Hide "Recent Apps" from the Dock
 defaults write com.apple.dock show-recents -bool false
 
-# Enable Dock auto-hide to maximize screen space
+# Enable auto-hide for the Dock
 defaults write com.apple.dock autohide -bool true
 
-# Resize Dock icons to 35px for a balanced look
+# Set Dock icon size to 35px
 defaults write com.apple.dock tilesize -int 35
+
+# Move the Dock to the left side of the screen
+defaults write com.apple.dock orientation -string "left"
 
 # Unhide the /Volumes directory in Finder
 sudo chflags nohidden /Volumes
@@ -18,67 +21,56 @@ sudo chflags nohidden /Volumes
 # Make the user's Library folder visible
 chflags nohidden ~/Library
 
-# Allow AirDrop to function over all network types, not just Wi-Fi
+# Allow AirDrop over any network interface
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 
-# Use key repeat instead of the slow press-and-hold popup
+# Use fast key repeat instead of press-and-hold menu
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# Dim the keyboard backlight after 1 minute of no activity
+# Dim keyboard backlight after 1 minute of inactivity
 defaults write com.apple.BezelServices kDimTime -int 60
 
-# Require a password immediately after the screen locks
+# Require password immediately after screen saver or sleep
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Only show scrollbars when actually scrolling
+# Show scrollbars only while scrolling
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
-# Keep virtual desktops (Spaces) in a fixed order
+# Keep Spaces in fixed order
 defaults write com.apple.dock mru-spaces -bool false
 
-# Turn off smart quotes and dashes, which are annoying for coding
+# Disable smart quotes and dashes (bad for coding)
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Disable autocorrect globally
+# Disable system-wide autocorrect
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# Prevent .DS_Store files from being written to network drives
+# Stop writing .DS_Store files to network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# Use dark mode system-wide
-defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
-
-# Show battery percentage in the menu bar
-defaults write com.apple.menuextra.battery ShowPercent -bool true
-
-# Show external drives and USBs on the desktop
+# Show external and removable drives on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-# Enable Finder status bar
-defaults write com.apple.finder ShowStatusBar -bool true
-
-# Enable Finder path bar
+# Show path bar in Finder windows
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Don't show a warning before emptying the trash
+# Skip warning when emptying the trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Don't ask for confirmation when changing file extensions
+# Don't show warning when changing file extensions
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Keep folders at the top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-# Default Finder searches to the current folder
+# Default to searching in the current folder
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 # Always show file extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Restart affected apps to apply settings
 killall Dock
 killall Finder
-killall SystemUIServer
