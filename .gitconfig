@@ -1,6 +1,6 @@
 [user]
 	name = Skylar
-	email = hi@skylar.wtf
+	email = hi@skylar.sh
 	signingkey = D446051236B7D4A5
 [filter "lfs"]
 	process = git-lfs filter-process
