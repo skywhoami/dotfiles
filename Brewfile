@@ -6,6 +6,7 @@ brew "colima", restart_service: :changed
 brew "docker"
 brew "docker-compose"
 brew "eza"
+brew "fastfetch"
 brew "fzf"
 brew "gh"
 brew "git-filter-repo"
