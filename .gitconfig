@@ -8,9 +8,10 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [push]
-    default = tracking
+  default = tracking
 [core]
-    excludesfile = ~/.gitignore
+  attributesfile = "~/.gitattributes"
+  excludesfile = "~/.gitignore"
 [init]
 	defaultBranch = main
 [alias]
@@ -34,11 +35,11 @@
 [submodule]
 	recurse = true
 [rebase]
-    autoStash = true
+  autoStash = true
 [credential "https://github.com"]
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-    helper = !/opt/homebrew/bin/gh auth git-credential
+  helper = !/opt/homebrew/bin/gh auth git-credential
 [commit]
 	gpgsign = true
 [tag]
