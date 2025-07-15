@@ -38,6 +38,7 @@ cask "sketch@beta"
 cask "steam"
 cask "xcodes-app"
 mas "1Password for Safari", id: 1569813296
+mas "Pages", id: 409201541
 mas "Refined GitHub", id: 1519867270
 mas "SponsorBlock", id: 1573461917
 mas "TestFlight", id: 899247664

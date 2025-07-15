@@ -28,6 +28,7 @@ zinit wait lucid for \
   zsh-users/zsh-syntax-highlighting \
   zsh-users/zsh-completions \
   zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-history-substring-search \
   Aloxaf/fzf-tab
 
 # Completion styling
@@ -57,7 +58,26 @@ docker_rm_stopped() {
   docker rm $(docker ps -a -q)
 }
 
+bindkey -v
+for mode in viins vicmd; do
+  bindkey -M $mode '^[[A' history-substring-search-up
+  bindkey -M $mode '^[[B' history-substring-search-down
+done
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
 export GPG_TTY=$(tty)
+echo -e "\e[35m"
+
+/bin/cat <<'EOF'
+  ╱|、
+ (˚ˎ。7
+ |、˜〵
+ じしˍ,)ノ
+EOF
+
+echo -e "\e[0m"

@@ -1,6 +1,6 @@
 README.md
 .idea
-update_brewfile.sh
+update_packages.sh
 .git
 .osx
 install.sh
