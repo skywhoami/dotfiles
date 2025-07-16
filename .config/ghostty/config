@@ -11,3 +11,4 @@ macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 title-report = true
 shell-integration-features = true
+macos-option-as-alt = "left"
