@@ -17,7 +17,7 @@ blocks:
   - properties:
       cache_duration: none
       style: full
-    template: "{{ .Path }}"
+    template: "{{ .Path }} "
     foreground: blue
     background: transparent
     type: path
@@ -27,7 +27,7 @@ blocks:
       cache_duration: none
       commit_icon: "@"
       fetch_status: true
-    template: " {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
+    template: "{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
     foreground: p:grey
     background: transparent
     type: git
