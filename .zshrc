@@ -31,6 +31,8 @@ zinit wait lucid for \
   zsh-users/zsh-history-substring-search \
   Aloxaf/fzf-tab
 
+source ~/.zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh
+
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -52,7 +54,18 @@ alias cat="bat"
 alias g="git"
 alias lg="lazygit"
 
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --ansi --preview-window=right:60% --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284 \
+--color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF \
+--color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284 \
+--color=selected-bg:#51576D \
+--color=border:#414559,label:#C6D0F5 \
+--height 40% \
+--layout=reverse \
+--border \
+--ansi \
+--preview-window=right:60% \
+--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 
 docker_rm_stopped() {
   docker rm $(docker ps -a -q)

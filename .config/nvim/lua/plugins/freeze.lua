@@ -8,7 +8,7 @@ return {
         return "./" .. os.date("%Y-%m-%d") .. "_freeze.png"
       end,
       show_line_numbers = true,
-      theme = "catppuccin-mocha",
+      theme = "catppuccin-frappe",
     })
 
     vim.api.nvim_set_keymap("v", "<leader>sc", "<cmd>Freeze<cr>", {})

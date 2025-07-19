@@ -50,7 +50,7 @@ g cleanup # fetch, prune, delete stale branches etc
 
 ## theme 
 
-i use the [Rosé Pine](https://github.com/rose-pine) theme pretty much everywhere as well as the [Maple Mono](https://github.com/subframe7536/maple-font) font.
+i use the [Catppuccin Frappe](https://github.com/catppuccin/catppuccin#-palette) theme pretty much everywhere as well as the [Maple Mono](https://github.com/subframe7536/maple-font) font.
 
 ## thanks
 
