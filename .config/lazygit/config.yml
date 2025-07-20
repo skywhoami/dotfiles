@@ -41,7 +41,7 @@ git:
     mode: 'rebase'
   paging:
     colorArg: always
-    useConfig: true
+    pager: delta --dark --paging=never
 update:
   method: never
 confirmOnQuit: true

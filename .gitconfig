@@ -10,6 +10,7 @@
 [push]
   default = tracking
 [core]
+  pager = delta
   attributesfile = "~/.gitattributes"
   excludesfile = "~/.gitignore"
 [init]
@@ -45,4 +46,12 @@
 [tag]
 	gpgSign = true
 [gpg]
-	program = gpg
+  program = gpg
+[interactive]
+  diffFilter = delta --color-only
+[include]
+  path = ~/.config/delta/themes/catppuccin.gitconfig
+[delta]
+  line-numbers = true
+  hyperlinks = true
+  features = catppuccin-frappe
