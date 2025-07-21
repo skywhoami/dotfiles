@@ -28,6 +28,9 @@ syntax on
 filetype plugin indent on
 set updatetime=500
 
+set spell
+set spelllang=en_gb
+
 inoremap <Esc> <Esc> " for some reason when i was hitting Esc in insert it wasn't doing anything
 
 nnoremap <leader>w :w<CR>

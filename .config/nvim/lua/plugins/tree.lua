@@ -2,6 +2,9 @@ return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
   config = function()
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
     require("nvim-tree").setup({
       renderer = {
         icons = {
@@ -25,7 +28,7 @@ return {
       git = { enable = false },
     })
 
-    vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-    vim.keymap.set("n", "<leader>fe", ":NvimTreeFocus<CR>", { desc = "Focus file explorer" })
+    vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+    vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "Focus file explorer" })
   end,
 }

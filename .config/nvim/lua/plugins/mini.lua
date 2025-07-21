@@ -11,6 +11,18 @@ return {
         },
       },
     })
+    vim.notify = require("mini.notify").make_notify()
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      callback = function(args)
+        local ft = vim.bo[args.buf].filetype
+        if ft == "" or vim.bo[args.buf].buftype ~= "" then
+          return
+        end
+
+        local fn = vim.fn.fnamemodify(args.file, ":t")
+        vim.notify("Saved " .. fn, vim.log.levels.INFO, { title = "File Written" })
+      end,
+    })
 
     require("mini.move").setup({
       mappings = {
@@ -38,6 +50,17 @@ return {
       mappings = {
         comment = "gc",
         comment_line = "gcc",
+      },
+    })
+
+    require("mini.surround").setup({
+      mappings = {
+        add = "S", -- Add surrounding in Normal and Visual modes
+        delete = "ds", -- Delete surrounding
+        find = "sf", -- Find surrounding (to the right)
+        find_left = "sF", -- Find surrounding (to the left)
+        highlight = "sh", -- Highlight surrounding
+        replace = "cs", -- Replace surrounding
       },
     })
   end,
