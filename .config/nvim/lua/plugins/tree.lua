@@ -17,7 +17,6 @@ return {
       view = {
         width = 30,
         side = "left",
-        hide_root_folder = false,
       },
       disable_netrw = true,
       hijack_netrw = true,
