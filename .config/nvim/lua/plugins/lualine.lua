@@ -1,6 +1,14 @@
 return {
   "nvim-lualine/lualine.nvim",
+  dependencies = {
+    "SmiteshP/nvim-navic",
+  },
   config = function()
+    require("nvim-navic").setup({
+      lsp = { auto_attach = true },
+      separator = " › ",
+      highlight = true,
+    })
     require("lualine").setup({
       options = {
         icons_enabled = false,
@@ -12,20 +20,16 @@ return {
         },
         component_separators = "",
         section_separators = "",
+        always_divide_middle = true,
       },
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
-          "branch",
+          { "branch" },
           "diff",
-          {
-            "filename",
-            path = 1,
-            shorting_target = 40,
-          },
         },
-        lualine_c = { "diagnostics" },
-        lualine_x = {},
+        lualine_c = { { "filename", path = 1, shorting_target = 40 } },
+        lualine_x = { "diagnostics" },
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },
@@ -38,9 +42,19 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      winbar = {},
+      winbar = {
+        lualine_c = {
+          {
+            "navic",
+            cond = function()
+              return require("nvim-navic").is_available()
+            end,
+          },
+        },
+      },
       inactive_winbar = {},
       extensions = {},
     })
+    vim.opt.showmode = false
   end,
 }
