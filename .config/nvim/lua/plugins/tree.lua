@@ -16,7 +16,7 @@ return {
       },
       view = {
         width = 30,
-        side = "left",
+        side = "right",
       },
       disable_netrw = true,
       hijack_netrw = true,
