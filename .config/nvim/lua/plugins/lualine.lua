@@ -14,13 +14,14 @@ return {
         icons_enabled = false,
         theme = "auto",
         globalstatus = true,
-        disabled_filetypes = {
-          statusline = {},
-          winbar = {},
-        },
         component_separators = "",
         section_separators = "",
         always_divide_middle = true,
+        ignore_focus = { "NvimTree" },
+        disabled_filetypes = {
+          statusline = { "NvimTree" },
+          winbar = { "NvimTree" },
+        },
       },
       sections = {
         lualine_a = { "mode" },

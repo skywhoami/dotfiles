@@ -34,7 +34,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 nnoremap <leader>x :x<CR>
-nnoremap <leader>e :Ex<CR>
 
 nnoremap ]d <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap [d <cmd>lua vim.diagnostic.goto_prev()<CR>

@@ -2,6 +2,7 @@ clipboard-read = allow
 clipboard-write = allow
 window-padding-x = 12
 background-opacity = 0.95
+background-blur = true
 theme = catppuccin-frappe
 font-size = 18
 font-family = Maple Mono
