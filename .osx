@@ -15,6 +15,12 @@ defaults write com.apple.dock tilesize -int 35
 # Move the Dock to the left side of the screen
 defaults write com.apple.dock orientation -string "left"
 
+# Minimize windows into app icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Disable desktop click revealing desktop (only in Stage Manager)
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
+
 # Unhide the /Volumes directory in Finder
 sudo chflags nohidden /Volumes
 
@@ -47,6 +53,9 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Disable system-wide autocorrect
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Disable automatic capitalization of sentences
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
 # Stop writing .DS_Store files to network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -75,5 +84,26 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Show hidden files and folders in Finder
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
+# Faster key repeat
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
+
+# Set DNS servers for primary service
+SERVICE=$(networksetup -listallnetworkservices | tail -n +2 | grep -v "*" | head -n 1)
+networksetup -setdnsservers "$SERVICE" 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
+
+# Flush DNS cache
+sudo dscacheutil -flushcache
+sudo killall -HUP mDNSResponder
+
+# Enable Firewall
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw \
+  --setallowsigned on \
+  --setallowsignedapp off \
+  --setstealthmode on \
+  --setglobalstate on \
+  --setblockall off
+
 killall Dock
 killall Finder
+killall WindowManager

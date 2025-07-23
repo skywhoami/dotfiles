@@ -1,5 +1,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PWD/node_modules/.bin:$PATH"
+export PATH="/Users/sky/.cargo/bin:$PATH"
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 export HOMEBREW_NO_ANALYTICS=1
 
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
