@@ -84,10 +84,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Show hidden files and folders in Finder
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
-# Faster key repeat
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 12
-
 # Set DNS servers for primary service
 SERVICE=$(networksetup -listallnetworkservices | tail -n +2 | grep -v "*" | head -n 1)
 networksetup -setdnsservers "$SERVICE" 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
