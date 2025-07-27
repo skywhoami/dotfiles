@@ -19,5 +19,6 @@
     just
     glow
     bun
+    charm-freeze
   ];
 }
