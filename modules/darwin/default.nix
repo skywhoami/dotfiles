@@ -8,10 +8,11 @@
 
   imports = [
     inputs.home-manager.darwinModules.home-manager
-    ../shared
     ./preferences.nix
     ./network.nix
     ./keyboard.nix
     ./brew.nix
   ];
+
+  system.stateVersion = 6;
 }

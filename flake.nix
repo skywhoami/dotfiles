@@ -30,29 +30,25 @@
       owner = "zhaofengli";
       repo = "nix-homebrew";
     };
+
+    flake-parts = {
+      type = "github";
+      owner = "hercules-ci";
+      repo = "flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    easy-hosts = {
+      type = "github";
+      owner = "tgirlcloud";
+      repo = "easy-hosts";
+    };
   };
 
-  outputs =
-    inputs@{
-      nixpkgs,
-      darwin,
-      home-manager,
-      homebrew,
-      ...
-    }:
-    {
-      darwinConfigurations = {
-        gloss = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/gloss
-            ./modules/darwin
-            home-manager.darwinModules.home-manager
-          ];
-        };
-      };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "aarch64-darwin" ];
+      imports = [ ./hosts ];
 
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
+      perSystem = {pkgs, ...}: {formatter = pkgs.nixfmt-rfc-style;};
     };
 }
