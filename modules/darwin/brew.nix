@@ -1,6 +1,11 @@
-{ pkgs, inputs, config, ... }:
 {
-  imports = [ 
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
+{
+  imports = [
     inputs.homebrew.darwinModules.nix-homebrew
     ./environment.nix
   ];
@@ -33,42 +38,42 @@
       autoMigrate = true;
     };
 
-      homebrew = {
-        enable = true;
+    homebrew = {
+      enable = true;
 
-        global.autoUpdate = true;
+      global.autoUpdate = true;
 
-        onActivation = {
-          upgrade = true;
-          cleanup = "zap";
-        };
-
-        taps = builtins.attrNames config.nix-homebrew.taps;
-
-        masApps = { };
-
-        brews = [
-          "colima"
-          "docker"
-          "docker-compose"
-          "mas"
-          "neovim"
-          "tmux"
-          "tpm"
-          "koekeishiya/formulae/yabai"
-          "koekeishiya/formulae/skhd"
-        ];
-
-        casks = [
-          "1password"
-          "1password-cli"
-          "aldente"
-          "discord"
-          "font-maple-mono"
-          "ghostty"
-          "signal"
-          "steam"
-        ];
+      onActivation = {
+        upgrade = true;
+        cleanup = "zap";
       };
+
+      taps = builtins.attrNames config.nix-homebrew.taps;
+
+      masApps = { };
+
+      brews = [
+        "colima"
+        "docker"
+        "docker-compose"
+        "mas"
+        "neovim"
+        "tmux"
+        "tpm"
+        "koekeishiya/formulae/yabai"
+        "koekeishiya/formulae/skhd"
+      ];
+
+      casks = [
+        "1password"
+        "1password-cli"
+        "aldente"
+        "discord"
+        "font-maple-mono"
+        "ghostty"
+        "signal"
+        "steam"
+      ];
     };
+  };
 }

@@ -3,14 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    
+
     darwin = {
       type = "github";
       owner = "nix-darwin";
       repo = "nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     home-manager = {
       type = "github";
       owner = "nix-community";
@@ -32,17 +32,27 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, darwin, home-manager, homebrew, ... }: {
-    darwinConfigurations = {
-      gloss = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/gloss
-          ./modules/darwin
-          home-manager.darwinModules.home-manager
-        ];
+  outputs =
+    inputs@{
+      nixpkgs,
+      darwin,
+      home-manager,
+      homebrew,
+      ...
+    }:
+    {
+      darwinConfigurations = {
+        gloss = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/gloss
+            ./modules/darwin
+            home-manager.darwinModules.home-manager
+          ];
+        };
       };
+
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
     };
-  };
 }

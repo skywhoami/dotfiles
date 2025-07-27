@@ -12,11 +12,12 @@
     ./lazygit.nix
     ./ripgrep.nix
     ./gpg.nix
+    ./rust.nix
   ];
 
   home.packages = with pkgs; [
     just
     glow
-    pinentry-curses
+    bun
   ];
 }

@@ -10,14 +10,14 @@
 
       color_align = {
         mode = "horizontal";
-        custom_colors = [];
+        custom_colors = [ ];
         fore_back = null;
       };
 
       backend = "fastfetch";
       args = null;
       distro = null;
-      pride_month_shown = [];
+      pride_month_shown = [ ];
       pride_month_disable = false;
     };
   };
@@ -25,9 +25,7 @@
   programs.fastfetch = {
     enable = true;
     settings = builtins.fromJSON (
-      builtins.unsafeDiscardStringContext (
-        builtins.readFile ./fasfetch.jsonc
-      )
+      builtins.unsafeDiscardStringContext (builtins.readFile ./fasfetch.jsonc)
     );
   };
 }

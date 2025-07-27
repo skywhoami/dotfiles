@@ -3,9 +3,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = builtins.fromJSON (
-      builtins.unsafeDiscardStringContext (
-        builtins.readFile ./config.json
-      )
+      builtins.unsafeDiscardStringContext (builtins.readFile ./config.json)
     );
   };
 }

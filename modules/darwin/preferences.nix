@@ -18,16 +18,16 @@
       NSAutomaticSpellingCorrectionEnabled = false;
       NSAutomaticCapitalizationEnabled = false;
     };
-    
+
     WindowManager = {
       EnableStandardClickToShowDesktop = false;
     };
-    
+
     screensaver = {
       askForPassword = true;
       askForPasswordDelay = 0;
     };
-    
+
     finder = {
       ShowPathbar = true;
       FXEnableExtensionChangeWarning = false;
@@ -44,7 +44,7 @@
       FXDefaultSearchScope = "SCcf";
       WarnOnEmptyTrash = false;
     };
-    
+
     loginwindow = {
       GuestEnabled = false;
       SHOWFULLNAME = false;
