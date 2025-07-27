@@ -45,10 +45,16 @@
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "aarch64-darwin" ];
       imports = [ ./hosts ];
 
-      perSystem = {pkgs, ...}: {formatter = pkgs.nixfmt-rfc-style;};
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
+        };
     };
 }

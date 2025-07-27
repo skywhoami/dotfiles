@@ -4,7 +4,7 @@
 
   config.easy-hosts = {
     perClass = class: {
-      modules = ["${self}/modules/${class}"];
+      modules = [ "${self}/modules/${class}" ];
     };
 
     shared.modules = [ ../modules/base ];
