@@ -6,5 +6,6 @@
     enable = true;
     flavor = "frappe";
     accent = "lavender";
+    nvim.enable = false;
   };
 }
