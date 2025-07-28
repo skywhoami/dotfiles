@@ -36,7 +36,7 @@
 
       # space 4: display 2
       yabai -m space 4 --label stack --layout stack
-      yabai -m rule --add app="Discord" space=stack
+      yabai -m rule --add app="Vesktop" space=stack
       yabai -m rule --add app="Signal" space=stack
       yabai -m rule --add app="Messages" space=stack
       yabai -m rule --add app="Mail" space=stack

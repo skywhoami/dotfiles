@@ -68,11 +68,11 @@
         "1password"
         "1password-cli"
         "aldente"
-        "discord"
         "font-maple-mono"
         "ghostty"
         "signal"
         "steam"
+        "vesktop"
       ];
     };
   };
