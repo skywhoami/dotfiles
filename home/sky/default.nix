@@ -6,5 +6,6 @@
   imports = [
     ./packages
     ./catppuccin.nix
+    ./yabai.nix
   ];
 }
