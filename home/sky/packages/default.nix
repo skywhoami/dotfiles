@@ -13,7 +13,7 @@
     ./ripgrep.nix
     ./gpg.nix
     ./rust.nix
-    ./neovim
+    ./neovim.nix
   ];
 
   home.packages = with pkgs; [
