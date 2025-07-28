@@ -35,7 +35,7 @@
       yabai -m rule --add app="Reminders" space=misc
 
       # space 4: display 2
-      yabai -m space 4 --layout stack --label stack
+      yabai -m space 4 --label stack --layout stack
       yabai -m rule --add app="Discord" space=stack
       yabai -m rule --add app="Signal" space=stack
       yabai -m rule --add app="Messages" space=stack
