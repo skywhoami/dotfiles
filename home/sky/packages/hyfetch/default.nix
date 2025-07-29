@@ -1,7 +1,7 @@
+{ config, ... }:
 {
   programs.hyfetch = {
-    enable = true;
-
+    inherit (config.profiles.graphical) enable;
     settings = {
       preset = "lesbian";
       mode = "rgb";
@@ -24,8 +24,6 @@
 
   programs.fastfetch = {
     enable = true;
-    settings = builtins.fromJSON (
-      builtins.unsafeDiscardStringContext (builtins.readFile ./fasfetch.jsonc)
-    );
+    settings = builtins.fromJSON (builtins.readFile ./fasfetch.jsonc);
   };
 }

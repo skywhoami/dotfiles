@@ -7,8 +7,6 @@
       modules = [ "${self}/modules/${class}" ];
     };
 
-    shared.modules = [ ../modules/base ];
-
     hosts = {
       gloss = {
         arch = "aarch64";

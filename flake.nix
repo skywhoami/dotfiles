@@ -43,18 +43,14 @@
       owner = "tgirlcloud";
       repo = "easy-hosts";
     };
+
+    systems = {
+      type = "github";
+      owner = "nix-systems";
+      repo = "default";
+    };
   };
 
   outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "aarch64-darwin" ];
-      imports = [ ./hosts ];
-
-      perSystem =
-        { pkgs, ... }:
-        {
-          formatter = pkgs.nixfmt-rfc-style;
-        };
-    };
+    inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ ./modules/flake ]; };
 }

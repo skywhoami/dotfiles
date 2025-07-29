@@ -1,4 +1,12 @@
-{ inputs, self, ... }:
+{
+  lib,
+  self,
+  self',
+  config,
+  inputs,
+  inputs',
+  ...
+}:
 {
   users.users.sky.home = "/Users/sky";
   home-manager = {
@@ -6,16 +14,19 @@
     useGlobalPkgs = true;
     backupFileExtension = "bak";
 
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit
+        self
+        self'
+        inputs
+        inputs'
+        ;
+    };
 
-    sharedModules = [
-      {
-        home.stateVersion = "25.11";
-        programs.home-manager.enable = true;
-      }
-      (self + /modules/home/default.nix)
-    ];
+    users = {
+      sky = ./sky;
+    };
 
-    users.sky = ./sky;
+    sharedModules = [ (self + /modules/home/default.nix) ];
   };
 }
