@@ -8,5 +8,6 @@
     ./packages
     ./catppuccin.nix
     ./yabai.nix
+    ./system
   ];
 }

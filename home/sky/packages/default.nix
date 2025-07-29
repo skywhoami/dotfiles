@@ -21,5 +21,7 @@
     glow
     bun
     charm-freeze
+    age
+    sops
   ];
 }

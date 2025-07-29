@@ -49,6 +49,13 @@
       owner = "nix-systems";
       repo = "default";
     };
+
+    sops = {
+      type = "github";
+      owner = "Mic92";
+      repo = "sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
