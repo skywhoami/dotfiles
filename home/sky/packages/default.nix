@@ -16,12 +16,14 @@
     ./neovim.nix
   ];
 
-  home.packages = with pkgs; [
-    just
-    glow
-    bun
-    charm-freeze
-    age
-    sops
-  ];
+  packages = {
+    inherit (pkgs)
+      just
+      glow
+      bun
+      charm-freeze
+      age
+      sops
+      ;
+  };
 }

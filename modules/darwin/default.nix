@@ -1,8 +1,6 @@
 { inputs, ... }:
 {
-  system.primaryUser = "sky";
-
-  security.pam.services.sudo_local.touchIdAuth = true;
+  _class = "darwin";
 
   system.defaults.CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
 
