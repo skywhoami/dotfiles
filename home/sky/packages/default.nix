@@ -13,7 +13,7 @@
     ./ripgrep.nix
     ./gpg.nix
     ./rust.nix
-    ./neovim.nix
+    ./neovim
   ];
 
   packages = {

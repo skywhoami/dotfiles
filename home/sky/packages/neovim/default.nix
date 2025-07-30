@@ -1,10 +1,12 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    withNodeJs = true;
     plugins = with pkgs.vimPlugins; [
-      lazy-nvim
       catppuccin-nvim
       nvim-cmp
       cmp-buffer
@@ -20,20 +22,35 @@
       nvim-lspconfig
       nvim-navic
       nvim-tree-lua
-      nvim-treesitter
       plenary-nvim
       telescope-file-browser-nvim
       telescope-fzf-native-nvim
       telescope-nvim
       which-key-nvim
+      (nvim-treesitter.withPlugins (
+        plugins: with plugins; [
+          nix
+          bash
+          css
+          html
+          javascript
+          typescript
+          json
+          lua
+          dockerfile
+          vue
+          yaml
+        ]
+      ))
     ];
-  };
-  home.file = {
-    ".vimrc".text = builtins.readFile ./neovim/.vimrc;
+
+    extraLuaConfig = ''
+      ${builtins.readFile ./init.lua}
+      vim.cmd("colorscheme catppuccin")
+    '';
   };
 
-  xdg.configFile."nvim" = {
-    source = ./neovim;
-    recursive = true;
+  home.file = {
+    ".vimrc".text = builtins.readFile ./.vimrc;
   };
 }

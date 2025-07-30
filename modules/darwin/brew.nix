@@ -57,7 +57,6 @@
         "docker"
         "docker-compose"
         "mas"
-        "neovim"
         "tmux"
         "tpm"
         "koekeishiya/formulae/yabai"
