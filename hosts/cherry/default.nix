@@ -1,24 +1,23 @@
+{ config, lib, pkgs, modulesPath, ... }:
 {
   profiles.headless.enable = true;
 
-  boot.tmp.cleanOnBoot = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.initrd.availableKernelModules = [
-    "ata_piix"
-    "uhci_hcd"
-    "xen_blkfront"
-    "vmw_pvscsi"
-  ];
-  boot.initrd.kernelModules = [ "nvme" ];
+  services.openssh.enable = true;
 
-  fileSystems."/" = {
-    device = "/dev/sda1";
-    fsType = "ext4";
-  };
+  imports =
+    [ (modulesPath + "/profiles/qemu-guest.nix")
+    ];
 
-  users.users.sky.openssh.authorizedKeys.keys = [
-    ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG56OdAD9r6wWd+ag1R+neANX1KSdpl/h8JkYVCVdNRi''
-  ];
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
+
+  swapDevices = [ ];
+
+  networking.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   system.stateVersion = "25.05";
 }

@@ -5,7 +5,5 @@
   imports = [
     ../base
     inputs.home-manager.nixosModules.home-manager
-    ./headless.nix
-    ./networking
   ];
 }
