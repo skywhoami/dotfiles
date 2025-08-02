@@ -4,7 +4,6 @@
 
   imports = [
     ../base
-    ./boot.nix
     ./environment
     inputs.home-manager.nixosModules.home-manager
     ./hardware
