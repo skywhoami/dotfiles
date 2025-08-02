@@ -72,6 +72,7 @@
         "signal"
         "steam"
         "vesktop"
+        "obs"
       ];
     };
   };

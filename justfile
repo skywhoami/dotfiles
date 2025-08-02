@@ -23,6 +23,9 @@ switch *args: (builder "switch" args)
 provision host:
     sudo nix run nix-darwin/master -- switch --flake {{ flake }}#{{ host }}
 
+[group('rebuild')]
+deploy host *args: (builder "switch" "--target-host " + host "--use-substitutes " + args)
+
 [group('utils')]
 clean:
     nix-collect-garbage --delete-older-than 3d
