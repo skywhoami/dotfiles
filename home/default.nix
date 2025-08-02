@@ -9,7 +9,7 @@
 {
   users.users.sky.isNormalUser = true;
   users.users.sky.home = if _class == "darwin" then "/Users/sky" else "/home/sky";
-  users.users.sky.extraGroups = ["wheel"];
+  users.users.sky.extraGroups = [ "wheel" ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;

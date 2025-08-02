@@ -1,4 +1,4 @@
-{_class,...}:
+{ _class, ... }:
 {
   home.username = "sky";
   home.homeDirectory = if _class == "darwin" then "/Users/sky" else "/home/sky";
