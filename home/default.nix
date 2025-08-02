@@ -1,14 +1,15 @@
 {
-  lib,
   self,
   self',
-  config,
   inputs,
   inputs',
+  _class,
   ...
 }:
 {
-  users.users.sky.home = "/Users/sky";
+  users.users.sky.isNormalUser = true;
+  users.users.sky.home = if _class == "darwin" then "/Users/sky" else "/home/sky";
+  users.users.sky.extraGroups = ["wheel"];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
