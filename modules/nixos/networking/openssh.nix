@@ -1,17 +1,7 @@
 {
-  lib,
-  self,
-  config,
-  ...
-}:
-{
   services.openssh = {
     enable = true;
     startWhenNeeded = true;
-
-    banner = ''
-      Connected to ${config.system.name} @ ${config.system.configurationRevision}
-    '';
 
     settings = {
       PermitRootLogin = "no";
