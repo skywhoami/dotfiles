@@ -3,8 +3,10 @@
 
   device.cpu = "intel";
 
-  boot = {
-    loader = "grub";
-    grub.device = "/dev/sda";
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "/dev/sda";
+    };
   };
 }
