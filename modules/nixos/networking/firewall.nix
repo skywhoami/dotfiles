@@ -13,7 +13,7 @@
       allowedTCPPortRanges = [ ];
       allowedUDPPortRanges = [ ];
 
-      allowPing = config.profiles.headless.enable;
+      allowPing = config.gum.profiles.headless.enable;
     };
   };
 }

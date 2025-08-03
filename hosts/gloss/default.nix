@@ -1,5 +1,5 @@
 {
-  profiles.graphical.enable = true;
+  gum.profiles.graphical.enable = true;
 
   system.primaryUser = "sky";
 

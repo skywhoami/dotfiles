@@ -16,7 +16,7 @@
     ./neovim
   ];
 
-  packages = {
+  gum.packages = {
     inherit (pkgs)
       just
       glow

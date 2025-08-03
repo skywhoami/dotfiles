@@ -1,6 +1,6 @@
 { lib, config, ... }:
 {
-  config = lib.mkIf config.profiles.headless.enable {
+  config = lib.mkIf config.gum.profiles.headless.enable {
     environment.variables.BROWSER = "echo";
 
     systemd = {

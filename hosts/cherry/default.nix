@@ -1,5 +1,9 @@
 {
-  profiles.headless.enable = true;
+  gum = {
+    profiles.headless.enable = true;
+    services.docker.enable = true;
+    system.networking.tailscale.enable = true;
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/f3d6d4c6-81f5-4b28-9f2e-a2a7fd98596b";

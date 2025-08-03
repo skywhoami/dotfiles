@@ -5,7 +5,7 @@
   ...
 }:
 {
-  options.packages = lib.mkOption {
+  options.gum.packages = lib.mkOption {
     type = lib.types.attrsOf lib.types.package;
     default = { };
     description = ''
@@ -15,11 +15,11 @@
 
   config = lib.mergeAttrsList [
     (lib.optionalAttrs (_class == "nixos" || _class == "darwin") {
-      environment.systemPackages = builtins.attrValues config.packages;
+      environment.systemPackages = builtins.attrValues config.gum.packages;
     })
 
     (lib.optionalAttrs (_class == "homeManager") {
-      home.packages = builtins.attrValues config.packages;
+      home.packages = builtins.attrValues config.gum.packages;
     })
   ];
 }
