@@ -9,6 +9,7 @@
     ./networking
     ./sudo.nix
     ./secrets.nix
+    ./services
   ];
 
   nix = {
