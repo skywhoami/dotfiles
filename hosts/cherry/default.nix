@@ -2,13 +2,15 @@
   profiles.headless.enable = true;
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0235fbb8-6dcc-45a6-89f0-9d86fade040d";
-    fsType = "ext4";
-  };
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F35B-6D22";
-    fsType = "ext4";
-  };
+  device = "/dev/disk/by-uuid/f3d6d4c6-81f5-4b28-9f2e-a2a7fd98596b";
+  fsType = "ext4";
+};
+
+fileSystems."/boot" = {
+  device = "/dev/disk/by-uuid/F22B-3527";
+  fsType = "vfat";
+};
+
 
   services.openssh = {
     enable = true;
