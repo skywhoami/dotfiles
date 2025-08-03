@@ -10,6 +10,8 @@
         user = "git";
         hostname = "github.com";
       };
+
+      "cherry".hostname = "91.99.239.117";
     };
 
     extraConfig = lib.mkIf config.profiles.graphical.enable ''

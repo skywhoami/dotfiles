@@ -1,8 +1,16 @@
 keys:
   - &sky ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG56OdAD9r6wWd+ag1R+neANX1KSdpl/h8JkYVCVdNRi
 
+  - &cherry ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHl8CYrBJmqdC8hW84Vb/znGY96APXrcNU/crsXKrpSs
+
 creation_rules:
   - path_regex: ^secrets/sky\.yaml$
     key_groups:
       - age:
         - *sky
+
+  - path_regex: secrets/services/[^/]+\.yaml$
+    key_groups:
+      - age:
+        - *sky
+        - *cherry
