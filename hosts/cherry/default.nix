@@ -2,11 +2,11 @@
   profiles.headless.enable = true;
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
+    device = "/dev/disk/by-uuid/0235fbb8-6dcc-45a6-89f0-9d86fade040d";
     fsType = "ext4";
   };
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
+    device = "/dev/disk/by-uuid/F35B-6D22";
     fsType = "ext4";
   };
 
