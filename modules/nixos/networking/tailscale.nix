@@ -17,7 +17,7 @@ in
 
     services.tailscale = {
       enable = true;
-      useRoutingFeatures = lib.mkDefault true;
+      useRoutingFeatures = lib.mkDefault "server";
     };
   };
 }
