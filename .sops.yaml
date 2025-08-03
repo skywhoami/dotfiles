@@ -9,7 +9,7 @@ creation_rules:
       - age:
         - *sky
 
-  - path_regex: secrets/services/[^/]+\.yaml$
+  - path_regex: ^secrets/services/[^/]+\.yaml$
     key_groups:
       - age:
         - *sky
