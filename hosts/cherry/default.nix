@@ -1,23 +1,38 @@
-{ config, lib, pkgs, modulesPath, ... }:
 {
   profiles.headless.enable = true;
 
-  services.openssh.enable = true;
+     fileSystems."/" = {
+     device = "/dev/disk/by-label/nixos";
+     fsType = "ext4";
+   };
+   fileSystems."/boot" = {
+     device = "/dev/disk/by-label/boot";
+     fsType = "ext4";
+   };
 
-  imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
-    ];
+     services.openssh = {
+     enable = true;
+     settings = {
+       PermitRootLogin = "no";
+       PasswordAuthentication = false;
+       KbdInteractiveAuthentication = false;
+     };
+   };
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
 
-  swapDevices = [ ];
+  boot.loader.grub.enable = true;
+   boot.loader.grub.device = "/dev/sda";
 
-  networking.useDHCP = lib.mkDefault true;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+     users.users = {
+     sky = {
+       isNormalUser = true;
+       extraGroups = [ "wheel" ];
+       openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG56OdAD9r6wWd+ag1R+neANX1KSdpl/h8JkYVCVdNRi"
+       ];
+     };
+   };
 
   system.stateVersion = "25.05";
 }
