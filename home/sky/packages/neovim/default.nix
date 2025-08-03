@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.neovim = {
-    enable = true;
+    inherit (config.profiles.graphical) enable;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
