@@ -18,6 +18,7 @@
     sky = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
+      hashedPassword = "$y$j9T$WoIWmBCy73Hzb0vEbiMiz/$uJKftRYxoqTBAbNkFwPaRNoIlVDYietq5Fk2GGEf3JA";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG56OdAD9r6wWd+ag1R+neANX1KSdpl/h8JkYVCVdNRi"
       ];
