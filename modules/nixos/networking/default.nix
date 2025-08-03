@@ -4,6 +4,7 @@
     ./fail2ban.nix
     ./firewall.nix
     ./openssh.nix
+    ./tailscale.nix
   ];
 
   networking = {
@@ -11,6 +12,9 @@
 
     networkmanager = {
       enable = true;
+      unmanaged = [
+        "interface-name:tailscale*"
+      ];
     };
   };
 }

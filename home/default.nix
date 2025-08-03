@@ -3,13 +3,14 @@
   self',
   inputs,
   inputs',
-  _class,
+  pkgs,
   ...
 }:
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+in
 {
-  users.users.sky.isNormalUser = true;
-  users.users.sky.home = if _class == "darwin" then "/Users/sky" else "/home/sky";
-  users.users.sky.extraGroups = [ "wheel" ];
+  users.users.sky.home = if isDarwin then "/Users/sky" else "/home/sky";
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
