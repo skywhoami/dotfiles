@@ -1,7 +1,6 @@
-{ config, ... }:
 {
   programs.hyfetch = {
-    inherit (config.profiles.graphical) enable;
+    enable = true;
     settings = {
       preset = "lesbian";
       mode = "rgb";

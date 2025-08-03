@@ -8,6 +8,7 @@
     ./headless.nix
     ./networking
     ./sudo.nix
+    ./secrets.nix
   ];
 
   nix = {
