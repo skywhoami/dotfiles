@@ -5,6 +5,7 @@
     services = {
       docker.enable = true;
       caddy.enable = true;
+      postgres.enable = true;
     };
     system.networking.tailscale.enable = true;
   };
