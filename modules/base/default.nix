@@ -3,5 +3,6 @@
     ../generic
     ../../home
     ./nix.nix
+    ./users
   ];
 }

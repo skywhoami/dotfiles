@@ -1,5 +1,6 @@
 {
   gum = {
+    users = [ "sky" ];
     profiles.headless.enable = true;
     services.docker.enable = true;
     system.networking.tailscale.enable = true;
@@ -17,20 +18,6 @@
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
-
-  users.users = {
-    sky = {
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "docker"
-      ];
-      hashedPassword = "$y$j9T$WoIWmBCy73Hzb0vEbiMiz/$uJKftRYxoqTBAbNkFwPaRNoIlVDYietq5Fk2GGEf3JA";
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG56OdAD9r6wWd+ag1R+neANX1KSdpl/h8JkYVCVdNRi"
-      ];
-    };
-  };
 
   system.stateVersion = "25.05";
 }

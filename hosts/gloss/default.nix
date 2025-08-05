@@ -1,5 +1,8 @@
 {
-  gum.profiles.graphical.enable = true;
+  gum = {
+    users = [ "sky" ];
+    profiles.graphical.enable = true;
+  };
 
   system.primaryUser = "sky";
 

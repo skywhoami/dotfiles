@@ -18,6 +18,7 @@
 
   gum.packages = {
     inherit (pkgs)
+      nodejs
       just
       glow
       bun

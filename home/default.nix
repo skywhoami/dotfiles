@@ -1,16 +1,13 @@
 {
+  lib,
+  config,
   self,
   self',
   inputs,
   inputs',
-  pkgs,
   ...
 }:
-let
-  isDarwin = pkgs.stdenv.isDarwin;
-in
 {
-  users.users.sky.home = if isDarwin then "/Users/sky" else "/home/sky";
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -25,9 +22,9 @@ in
         ;
     };
 
-    users = {
-      sky = ./sky;
-    };
+    users = lib.genAttrs config.gum.users (name: {
+      imports = [ ./${name} ];
+    });
 
     sharedModules = [ (self + /modules/home/default.nix) ];
   };
