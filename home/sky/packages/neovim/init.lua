@@ -104,84 +104,163 @@ require("gitsigns").setup({
   current_line_blame_formatter = "<author>, <author_time:%d-%m-%Y> - <summary>",
 })
 
-local lspconfig = require("lspconfig")
-local mason = require("mason")
-local mason_lsp = require("mason-lspconfig")
+local navic = require("nvim-navic")
 
-local vue_language_server_path = vim.fn.stdpath("data")
-  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+navic.setup({
+  separator = " › ",
+  highlight = true,
+})
 
-local vue_plugin = {
-  name = "@vue/typescript-plugin",
-  location = vue_language_server_path,
-  languages = { "vue" },
-  configNamespace = "typescript",
-}
-local vtsls_config = {
-  settings = {
-    vtsls = {
-      tsserver = {
-        globalPlugins = {
-          vue_plugin,
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    navic.attach(client, event.buf)
+    vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+  end,
+})
+
+local servers = {
+  lua_ls = {
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+        },
+        diagnostics = {
+          globals = { "vim" },
+        },
+        hint = { enable = true },
+      },
+    },
+  },
+
+  yamlls = {
+    settings = {
+      yaml = {
+        completion = true,
+        validate = true,
+        suggest = {
+          parentSkeletonSelectedFirst = true,
+        },
+        schemas = {
+          ["https://www.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+          ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.{yml,yaml}",
+        },
+      },
+      redhat = {
+        telemetry = {
+          enable = false,
         },
       },
     },
   },
-  filetypes = { "typescript", "javascript", "vue" },
-}
 
-local vue_ls_config = {
-  on_init = function(client)
-    client.handlers["tsserver/request"] = function(_, result, context)
-      local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
-      if #clients == 0 then
-        vim.notify(
-          "Could not find `vtsls` lsp client, `vue_ls` would not work without it.",
-          vim.log.levels.ERROR
-        )
-        return
-      end
-      local ts_client = clients[1]
-
-      local param = unpack(result)
-      local id, command, payload = unpack(param)
-      ts_client:exec_cmd({
-        title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
-        command = "typescript.tsserverRequest",
-        arguments = {
-          command,
-          payload,
+  jsonls = {
+    settings = {
+      json = {
+        validate = { enable = true },
+        schemas = {
+          {
+            fileMatch = { "package.json" },
+            url = "https://www.schemastore.org/package.json",
+          },
+          {
+            fileMatch = { "tsconfig*.json" },
+            url = "https://www.schemastore.org/tsconfig.json",
+          },
         },
-      }, { bufnr = context.bufnr }, function(_, r)
-        local response_data = { { id, r.body } }
-        ---@diagnostic disable-next-line: param-type-mismatch
-        client:notify("tsserver/response", response_data)
-      end)
-    end
-  end,
-}
-
-vim.lsp.config("vtsls", vtsls_config)
-vim.lsp.config("vue_ls", vue_ls_config)
-vim.lsp.enable({ "vtsls", "vue_ls" })
-
-mason.setup()
-mason_lsp.setup({
-  ensure_installed = {
-    "dockerls",
-    "docker_compose_language_service",
-    "vtsls",
-    "vue_ls",
-    "bashls",
-    "cssls",
-    "jsonls",
-    "lua_ls",
-    "yamlls",
-    "tailwindcss",
-    "just",
-    "nil_ls",
+      },
+    },
   },
-})
+
+  emmet_language_server = {
+    filetypes = {
+      "astro",
+      "css",
+      "html",
+      "javascriptreact",
+      "typescriptreact",
+      "vue",
+    },
+  },
+
+  vtsls = {
+    settings = {
+      vtsls = {
+        tsserver = {
+          globalPlugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = vim.fn.stdpath("data")
+                .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+              languages = { "vue" },
+              configNamespace = "typescript",
+            },
+          },
+        },
+      },
+    },
+    filetypes = { "typescript", "javascript", "vue" },
+  },
+
+  vue_ls = {
+    on_init = function(client)
+      client.handlers["tsserver/request"] = function(_, result, context)
+        local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+        if #clients == 0 then
+          vim.notify(
+            "Could not find `vtsls` lsp client, `vue_ls` would not work without it.",
+            vim.log.levels.ERROR
+          )
+          return
+        end
+        local ts_client = clients[1]
+
+        local param = unpack(result)
+        local id, command, payload = unpack(param)
+        ts_client:exec_cmd({
+          title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+          command = "typescript.tsserverRequest",
+          arguments = {
+            command,
+            payload,
+          },
+        }, { bufnr = context.bufnr }, function(_, r)
+          local response_data = { { id, r.body } }
+          ---@diagnostic disable-next-line: param-type-mismatch
+          client:notify("tsserver/response", response_data)
+        end)
+      end
+    end,
+  },
+
+  tailwindcss = {
+    filetypes = {
+      "vue",
+      "css",
+      "html",
+      "typescriptreact",
+      "javascriptreact",
+      "astro",
+    },
+  },
+
+  nil_ls = {
+    cmd = { "nil" },
+    settings = {
+      ["nil"] = {
+        diagnostics = {
+          bindingEndHintMinLines = 2,
+        },
+        nix = { maxMemoryMB = nil },
+      },
+    },
+  },
+
+  just = {},
+
+  dockerls = {},
+}
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -198,53 +277,10 @@ vim.diagnostic.config({
   },
 })
 
-lspconfig["yamlls"].setup({
-  settings = {
-    yaml = {
-      schemas = {
-        ["https://www.schemastore.org/github-workflow.json"] = ".github/workflows/*",
-        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.{yml,yaml}",
-      },
-    },
-  },
-})
-
-lspconfig["jsonls"].setup({
-  settings = {
-    json = {
-      schemas = {
-        {
-          fileMatch = { "package.json" },
-          url = "https://www.schemastore.org/package.json",
-        },
-        {
-          fileMatch = { "tsconfig*.json" },
-          url = "https://www.schemastore.org/tsconfig.json",
-        },
-      },
-    },
-  },
-})
-
-lspconfig["lua_ls"].setup({
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false,
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
+for server, config in pairs(servers) do
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
+end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
@@ -258,12 +294,6 @@ vim.keymap.set(
   vim.lsp.buf.hover,
   { noremap = true, silent = true, desc = "LSP Hover Documentation" }
 )
-
-require("nvim-navic").setup({
-  lsp = { auto_attach = true },
-  separator = " › ",
-  highlight = true,
-})
 
 require("lualine").setup({
   options = {

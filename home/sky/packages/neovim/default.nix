@@ -16,8 +16,6 @@
       cord-nvim
       gitsigns-nvim
       lualine-nvim
-      mason-nvim
-      mason-lspconfig-nvim
       mini-nvim
       nvim-lspconfig
       nvim-navic
@@ -42,6 +40,19 @@
           yaml
         ]
       ))
+    ];
+    extraPackages = with pkgs; [
+      ripgrep
+      nil
+      emmet-language-server
+      vtsls
+      vue-language-server
+      docker-language-server
+      docker-compose-language-service
+      yaml-language-server
+      bash-language-server
+      tailwindcss-language-server
+      lua-language-server
     ];
 
     extraLuaConfig = ''
