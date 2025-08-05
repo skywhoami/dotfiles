@@ -13,7 +13,9 @@
         class = "darwin";
       };
 
-      cherry = { };
+      cherry = {
+        arch = "aarch64";
+      };
     };
   };
 }
