@@ -2,7 +2,10 @@
   gum = {
     users = [ "sky" ];
     profiles.headless.enable = true;
-    services.docker.enable = true;
+    services = {
+      docker.enable = true;
+      caddy.enable = true;
+    };
     system.networking.tailscale.enable = true;
   };
 
