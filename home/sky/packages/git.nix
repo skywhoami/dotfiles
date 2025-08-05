@@ -7,7 +7,7 @@
     userEmail = "hi" + "@" + "skylar" + "." + "sh";
 
     signing = {
-      key = "300612855E395F8E";
+      key = "29E2B1E3F89581C0";
       format = "openpgp";
       signByDefault = true;
     };

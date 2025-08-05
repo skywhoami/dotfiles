@@ -73,6 +73,7 @@
         "steam"
         "vesktop"
         "obs"
+        "proton-mail"
       ];
     };
   };
