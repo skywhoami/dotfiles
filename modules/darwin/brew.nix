@@ -50,7 +50,12 @@
 
       taps = builtins.attrNames config.nix-homebrew.taps;
 
-      masApps = { };
+      masApps = {
+        "Pages" = 409201541;
+        "Tailscale" = 1475387142;
+        "TestFlight" = 899247664;
+        "WhatsApp" = 310633997;
+      };
 
       brews = [
         "colima"
@@ -72,8 +77,9 @@
         "signal"
         "steam"
         "vesktop"
-        "obs"
         "proton-mail"
+        "raycast"
+        "zen"
       ];
     };
   };
