@@ -1,6 +1,8 @@
 { config, lib, ... }:
 {
-  config = lib.mkIf config.gum.services.caddy.enable {
+  options.gum.services.website.enable = lib.options.mkEnableOption "sky-website";
+
+  config = lib.mkIf config.gum.services.website.enable {
     services.caddy.virtualHosts = {
       "${config.gum.services.caddy.domain}" = {
         extraConfig = ''
