@@ -62,8 +62,6 @@
         "docker"
         "docker-compose"
         "mas"
-        "tmux"
-        "tpm"
         "koekeishiya/formulae/yabai"
         "koekeishiya/formulae/skhd"
       ];
