@@ -6,6 +6,7 @@
       docker.enable = true;
       caddy.enable = true;
       postgres.enable = true;
+      website.enable = true;
     };
     system.networking.tailscale.enable = true;
   };
