@@ -6,7 +6,6 @@
       docker.enable = true;
       caddy.enable = true;
       postgres.enable = true;
-      website.enable = true;
     };
     system.networking.tailscale.enable = true;
   };
@@ -31,5 +30,12 @@
     ];
   };
 
+  services.caddy.virtualHosts = {
+    "skylar.sh" = {
+      extraConfig = ''
+        reverse_proxy localhost:3000
+      '';
+    };
+  };
   system.stateVersion = "25.05";
 }
