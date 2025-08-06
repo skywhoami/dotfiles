@@ -31,7 +31,7 @@ cmp.setup({
           return entry.completion_item.label:match("^@")
         elseif cursor_before_line:sub(-1) == ":" then
           return entry.completion_item.label:match("^:")
-            and not entry.completion_item.label:match("^:on%-")
+              and not entry.completion_item.label:match("^:on%-")
         else
           return true
         end
@@ -144,7 +144,8 @@ local servers = {
         },
         schemas = {
           ["https://www.schemastore.org/github-workflow.json"] = ".github/workflows/*",
-          ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.{yml,yaml}",
+          ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+          "docker-compose*.{yml,yaml}",
         },
       },
       redhat = {
@@ -173,17 +174,6 @@ local servers = {
     },
   },
 
-  emmet_language_server = {
-    filetypes = {
-      "astro",
-      "css",
-      "html",
-      "javascriptreact",
-      "typescriptreact",
-      "vue",
-    },
-  },
-
   vtsls = {
     settings = {
       vtsls = {
@@ -191,8 +181,7 @@ local servers = {
           globalPlugins = {
             {
               name = "@vue/typescript-plugin",
-              location = vim.fn.stdpath("data")
-                .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+              location = "~/Users/sky/.bun/bin/vue-language-server",
               languages = { "vue" },
               configNamespace = "typescript",
             },
@@ -203,47 +192,7 @@ local servers = {
     filetypes = { "typescript", "javascript", "vue" },
   },
 
-  vue_ls = {
-    on_init = function(client)
-      client.handlers["tsserver/request"] = function(_, result, context)
-        local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
-        if #clients == 0 then
-          vim.notify(
-            "Could not find `vtsls` lsp client, `vue_ls` would not work without it.",
-            vim.log.levels.ERROR
-          )
-          return
-        end
-        local ts_client = clients[1]
-
-        local param = unpack(result)
-        local id, command, payload = unpack(param)
-        ts_client:exec_cmd({
-          title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
-          command = "typescript.tsserverRequest",
-          arguments = {
-            command,
-            payload,
-          },
-        }, { bufnr = context.bufnr }, function(_, r)
-          local response_data = { { id, r.body } }
-          ---@diagnostic disable-next-line: param-type-mismatch
-          client:notify("tsserver/response", response_data)
-        end)
-      end
-    end,
-  },
-
-  tailwindcss = {
-    filetypes = {
-      "vue",
-      "css",
-      "html",
-      "typescriptreact",
-      "javascriptreact",
-      "astro",
-    },
-  },
+  vue_ls = {},
 
   nil_ls = {
     cmd = { "nil" },
@@ -401,12 +350,12 @@ require("mini.comment").setup({
 
 require("mini.surround").setup({
   mappings = {
-    add = "S", -- Add surrounding in Normal and Visual modes
-    delete = "ds", -- Delete surrounding
-    find = "sf", -- Find surrounding (to the right)
+    add = "S",        -- Add surrounding in Normal and Visual modes
+    delete = "ds",    -- Delete surrounding
+    find = "sf",      -- Find surrounding (to the right)
     find_left = "sF", -- Find surrounding (to the left)
     highlight = "sh", -- Highlight surrounding
-    replace = "cs", -- Replace surrounding
+    replace = "cs",   -- Replace surrounding
   },
 })
 

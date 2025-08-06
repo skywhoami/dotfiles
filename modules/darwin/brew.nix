@@ -78,6 +78,7 @@
         "proton-mail"
         "raycast"
         "zen"
+        "proton-drive"
       ];
     };
   };

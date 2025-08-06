@@ -14,6 +14,7 @@
     ./gpg.nix
     ./rust.nix
     ./neovim
+    ./tmux.nix
   ];
 
   gum.packages = {
