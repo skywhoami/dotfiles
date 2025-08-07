@@ -53,12 +53,12 @@ in
       caddy.virtualHosts.${cfg.hostname} = {
         extraConfig = ''
           @ageAssurance path /xrpc/app.bsky.unspecced.getAgeAssuranceState
-          respond @ageAssurance `{
-            "lastInitiatedAt": "2025-07-14T15:11:05.487Z",
-            "status": "assured"
-          }` {
-            status 200
-            content_type application/json
+          respond @ageAssurance 200 {
+            body `{
+              "lastInitiatedAt": "2025-07-14T15:11:05.487Z",
+              "status": "assured"
+            }`
+            header Content-Type application/json
             header Access-Control-Allow-Origin *
             header Access-Control-Allow-Headers "authorization,dpop,atproto-accept-labelers,atproto-proxy"
             header X-Frame-Options SAMEORIGIN
