@@ -18,7 +18,7 @@ in
 
     hostname = mkOption {
       type = str;
-      default = "pds.skylar.sh";
+      default = "pds.subnetbabe.cloud";
     };
 
     port = mkOption {
