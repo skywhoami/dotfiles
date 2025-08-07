@@ -1,0 +1,74 @@
+{
+  self,
+  lib,
+  config,
+  ...
+}:
+let
+  inherit (lib) mkIf;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.types) str port;
+
+  cfg = config.gum.services.pds;
+in
+{
+
+  options.gum.services.pds = {
+    enable = mkEnableOption "Enable PDS";
+
+    hostname = mkOption {
+      type = str;
+      default = "pds.skylar.sh";
+    };
+
+    port = mkOption {
+      type = port;
+      default = 3601;
+    };
+  };
+
+  config = mkIf cfg.enable {
+    sops.secrets.pds-env = {
+      sopsFile = "${self}/secrets/services/pds.yaml";
+      owner = "caddy";
+      group = "caddy";
+    };
+
+    services = {
+      pds = {
+        enable = true;
+        pdsadmin.enable = true;
+
+        environmentFiles = [
+          config.sops.secrets.pds-env.path
+        ];
+
+        settings = {
+          PDS_PORT = cfg.port;
+          PDS_HOSTNAME = cfg.hostname;
+          PDS_CRAWLERS = "https://bsky.network,https://relay.cerulea.blue";
+        };
+      };
+
+      caddy.virtualHosts.${cfg.hostname} = {
+        extraConfig = ''
+          @ageAssurance path /xrpc/app.bsky.unspecced.getAgeAssuranceState
+          respond @ageAssurance `{
+            "lastInitiatedAt": "2025-07-14T15:11:05.487Z",
+            "status": "assured"
+          }` {
+            status 200
+            content_type application/json
+            header Access-Control-Allow-Origin *
+            header Access-Control-Allow-Headers "authorization,dpop,atproto-accept-labelers,atproto-proxy"
+            header X-Frame-Options SAMEORIGIN
+            header X-Content-Type-Options nosniff
+          }
+
+          @notAgeAssurance not path /xrpc/app.bsky.unspecced.getAgeAssuranceState
+          reverse_proxy @notAgeAssurance 127.0.0.1:${toString cfg.port}
+        '';
+      };
+    };
+  };
+}
