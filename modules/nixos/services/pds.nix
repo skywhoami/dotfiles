@@ -52,21 +52,25 @@ in
 
       caddy.virtualHosts.${cfg.hostname} = {
         extraConfig = ''
-          @ageAssurance path /xrpc/app.bsky.unspecced.getAgeAssuranceState
-          respond @ageAssurance 200 {
-            body `{
-              "lastInitiatedAt": "2025-07-14T15:11:05.487Z",
-              "status": "assured"
-            }`
-            header Content-Type application/json
-            header Access-Control-Allow-Origin *
-            header Access-Control-Allow-Headers "authorization,dpop,atproto-accept-labelers,atproto-proxy"
-            header X-Frame-Options SAMEORIGIN
-            header X-Content-Type-Options nosniff
+          handle_path /xrpc/app.bsky.unspecced.getAgeAssuranceState {
+            respond 200 {
+              body `{
+                "lastInitiatedAt": "2025-07-14T15:11:05.487Z",
+                "status": "assured"
+              }`
+            }
+            header {
+              Access-Control-Allow-Headers "authorization,dpop,atproto-accept-labelers,atproto-proxy"
+              Access-Control-Allow-Origin  "*"
+              X-Frame-Options             "SAMEORIGIN"
+              X-Content-Type-Options     "nosniff"
+              Content-Type               "application/json"
+            }
           }
 
-          @notAgeAssurance not path /xrpc/app.bsky.unspecced.getAgeAssuranceState
-          reverse_proxy @notAgeAssurance 127.0.0.1:${toString cfg.port}
+          handle {
+            reverse_proxy 127.0.0.1:${toString cfg.port}
+          }
         '';
       };
     };
