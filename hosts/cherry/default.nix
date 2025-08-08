@@ -38,6 +38,11 @@
         reverse_proxy localhost:3000
       '';
     };
+    "subnetbabe.cloud" = {
+      extraConfig = ''
+        reverse_proxy localhost:4321
+      '';
+    };
   };
   system.stateVersion = "25.05";
 }
