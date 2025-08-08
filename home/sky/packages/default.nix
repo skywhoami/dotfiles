@@ -15,6 +15,7 @@
     ./rust.nix
     ./neovim
     ./tmux.nix
+    ./kitty
   ];
 
   gum.packages = {

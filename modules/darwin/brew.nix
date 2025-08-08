@@ -71,7 +71,7 @@
         "1password-cli"
         "aldente"
         "font-maple-mono"
-        "ghostty"
+        "kitty"
         "signal"
         "steam"
         "vesktop"
