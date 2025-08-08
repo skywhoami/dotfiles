@@ -130,7 +130,7 @@ in
     };
 
     services.caddy.virtualHosts = {
-      "home.${config.sys.services.caddy.domain}" = {
+      "glance.${config.sys.services.caddy.domain}" = {
         extraConfig = ''
           reverse_proxy localhost:5678
         '';
