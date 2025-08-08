@@ -9,11 +9,11 @@ let
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) str port;
 
-  cfg = config.gum.services.pds;
+  cfg = config.sys.services.pds;
 in
 {
 
-  options.gum.services.pds = {
+  options.sys.services.pds = {
     enable = mkEnableOption "Enable PDS";
 
     hostname = mkOption {

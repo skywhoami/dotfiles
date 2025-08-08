@@ -4,9 +4,9 @@ let
   inherit (lib.options) mkEnableOption;
 in
 {
-  options.gum.services.docker.enable = mkEnableOption "Enable Docker";
+  options.sys.services.docker.enable = mkEnableOption "Enable Docker";
 
-  config = mkIf config.gum.services.docker.enable {
+  config = mkIf config.sys.services.docker.enable {
     virtualisation.docker.enable = true;
   };
 }

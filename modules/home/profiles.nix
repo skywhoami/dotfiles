@@ -1,9 +1,9 @@
 { osConfig, ... }:
 let
-  cfg = osConfig.gum.profiles;
+  cfg = osConfig.sys.profiles;
 in
 {
-  gum.profiles = {
+  sys.profiles = {
     inherit (cfg)
       graphical
       headless

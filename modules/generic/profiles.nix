@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption;
 in
 {
-  options.gum.profiles = {
+  options.sys.profiles = {
     graphical.enable = mkEnableOption "Graphical Interface";
     headless.enable = mkEnableOption "Headless";
   };

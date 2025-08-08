@@ -11,11 +11,11 @@ let
     mkOption
     mkEnableOption
     ;
-  cfg = config.gum.services.caddy;
+  cfg = config.sys.services.caddy;
 in
 {
   options = {
-    gum.services.caddy = {
+    sys.services.caddy = {
       enable = mkEnableOption "Enable Caddy web server.";
 
       domain = mkOption {

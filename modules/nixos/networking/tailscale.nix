@@ -9,10 +9,10 @@ let
   inherit (config.services) tailscale;
 in
 {
-  options.gum.system.networking.tailscale.enable = mkEnableOption "Enable Tailscale";
+  options.sys.system.networking.tailscale.enable = mkEnableOption "Enable Tailscale";
 
-  config = mkIf config.gum.system.networking.tailscale.enable {
-    gum.packages = { inherit (pkgs) tailscale; };
+  config = mkIf config.sys.system.networking.tailscale.enable {
+    sys.packages = { inherit (pkgs) tailscale; };
     networking.firewall = {
       trustedInterfaces = [ "${tailscale.interfaceName}" ];
       allowedUDPPorts = [ tailscale.port ];

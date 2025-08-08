@@ -4,9 +4,9 @@ let
   inherit (lib.options) mkEnableOption;
 in
 {
-  options.gum.services.glance.enable = mkEnableOption "Enable Glance";
+  options.sys.services.glance.enable = mkEnableOption "Enable Glance";
 
-  config = mkIf config.gum.services.glance.enable {
+  config = mkIf config.sys.services.glance.enable {
     services.glance = {
       enable = true;
       settings = {
@@ -117,7 +117,7 @@ in
                     sites = [
                       {
                         title = "website";
-                        url = "https://${config.gum.services.caddy.domain}";
+                        url = "https://${config.sys.services.caddy.domain}";
                       }
                     ];
                   }
@@ -130,7 +130,7 @@ in
     };
 
     services.caddy.virtualHosts = {
-      "home.${config.gum.services.caddy.domain}" = {
+      "home.${config.sys.services.caddy.domain}" = {
         extraConfig = ''
           reverse_proxy localhost:5678
         '';

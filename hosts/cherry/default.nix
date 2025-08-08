@@ -1,5 +1,5 @@
 {
-  gum = {
+  sys = {
     users = [ "sky" ];
     profiles.headless.enable = true;
     services = {

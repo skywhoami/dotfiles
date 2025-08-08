@@ -13,7 +13,7 @@ let
     ;
 in
 {
-  users.users = genAttrs config.gum.users (
+  users.users = genAttrs config.sys.users (
     name:
     mergeAttrsList [
       (optionalAttrs (_class == "darwin") {

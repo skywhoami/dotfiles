@@ -6,10 +6,10 @@
 let
   inherit (lib) mkIf mkEnableOption;
 
-  cfg = config.gum.services.postgres;
+  cfg = config.sys.services.postgres;
 in
 {
-  options.gum.services.postgres.enable = mkEnableOption "Enable PostgreSQL";
+  options.sys.services.postgres.enable = mkEnableOption "Enable PostgreSQL";
 
   config = mkIf cfg.enable {
     services.postgresql = {

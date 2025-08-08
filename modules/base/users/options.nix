@@ -4,7 +4,7 @@ let
   inherit (lib.types) listOf str;
 in
 {
-  options.gum.users = mkOption {
+  options.sys.users = mkOption {
     type = listOf str;
     default = [ "sky" ];
     description = ''
@@ -13,10 +13,10 @@ in
   };
 
   config = {
-    warnings = optional (config.gum.users == [ ]) ''
+    warnings = optional (config.sys.users == [ ]) ''
       You have not configured any users.
 
-      Please set {option}`config.gum.users` in your host configuration.
+      Please set {option}`config.sys.users` in your host configuration.
     '';
   };
 }

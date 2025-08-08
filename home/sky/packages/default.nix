@@ -18,7 +18,7 @@
     ./kitty
   ];
 
-  gum.packages = {
+  sys.packages = {
     inherit (pkgs)
       nodejs
       just

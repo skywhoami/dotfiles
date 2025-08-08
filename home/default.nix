@@ -22,7 +22,7 @@
         ;
     };
 
-    users = lib.genAttrs config.gum.users (name: {
+    users = lib.genAttrs config.sys.users (name: {
       imports = [ ./${name} ];
     });
 
