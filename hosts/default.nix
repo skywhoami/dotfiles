@@ -16,6 +16,8 @@
       cherry = {
         arch = "aarch64";
       };
+
+      sage = { };
     };
   };
 }
