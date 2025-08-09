@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -15,6 +16,15 @@
        じしˍ,)ノ
       EOF
       echo -e "\e[0m"
+      ${
+        if config.sys.profiles.graphical.enable then
+          ''
+            export OPENAI_API_KEY=$(op item get y2z3xckwyzpn43cl36tvsjynna --reveal --fields credential)
+            export GITHUB_TOKEN=$(op item get 6uhima35crscozrsnjhgdzifzq --reveal --fields token)
+          ''
+        else
+          ""
+      }
     '';
 
     envExtra = ''

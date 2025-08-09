@@ -16,6 +16,7 @@
     ./neovim
     ./tmux.nix
     ./kitty
+    ./crush
   ];
 
   sys.packages = {

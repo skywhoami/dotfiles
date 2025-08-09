@@ -56,6 +56,12 @@
       repo = "sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ai-tools = {
+      type = "github";
+      owner = "numtide";
+      repo = "nix-ai-tools";
+    };
   };
 
   outputs =
