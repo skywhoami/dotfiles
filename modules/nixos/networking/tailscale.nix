@@ -11,7 +11,7 @@ in
 {
   options.sys.networking.tailscale.enable = mkEnableOption "Enable Tailscale";
 
-  config = mkIf config.sys.system.networking.tailscale.enable {
+  config = mkIf config.sys.networking.tailscale.enable {
     sys.packages = { inherit (pkgs) tailscale; };
     networking.firewall = {
       trustedInterfaces = [ "${tailscale.interfaceName}" ];
