@@ -28,6 +28,7 @@
       charm-freeze
       age
       sops
+      go
       ;
   };
 }

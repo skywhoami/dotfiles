@@ -9,7 +9,7 @@ let
   inherit (config.services) tailscale;
 in
 {
-  options.sys.system.networking.tailscale.enable = mkEnableOption "Enable Tailscale";
+  options.sys.networking.tailscale.enable = mkEnableOption "Enable Tailscale";
 
   config = mkIf config.sys.system.networking.tailscale.enable {
     sys.packages = { inherit (pkgs) tailscale; };
