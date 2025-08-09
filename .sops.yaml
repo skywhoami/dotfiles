@@ -2,6 +2,7 @@ keys:
   - &sky ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIyMCwBcRVn8QdhGrI/2PWY6g9cIFEGphXBG2T3FHg5
 
   - &cherry age1scn08ur8vv3r97k2l4q3j2jarq6gfpnz4n2mzx96hzvj8rxcefzq3ypl0z
+  - &sage age1em8vh5ej8w45xc0h7lvyug0yvmnx5y257s9aqnhhqhsx09z6v47qgkpnhr
 
 creation_rules:
   - path_regex: ^secrets/sky\.yaml$
@@ -14,3 +15,4 @@ creation_rules:
       - age:
         - *sky
         - *cherry
+        - *sage

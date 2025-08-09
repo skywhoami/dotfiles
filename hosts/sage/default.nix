@@ -2,7 +2,10 @@
   sys = {
     users = [ "sky" ];
     profiles.headless.enable = true;
-    services = { };
+    services = {
+      caddy.enable = true;
+      pds.enable = true;
+    };
     networking.tailscale.enable = true;
   };
 
