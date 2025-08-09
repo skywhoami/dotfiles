@@ -1,5 +1,5 @@
 keys:
-  - &sky ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG56OdAD9r6wWd+ag1R+neANX1KSdpl/h8JkYVCVdNRi
+  - &sky ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIyMCwBcRVn8QdhGrI/2PWY6g9cIFEGphXBG2T3FHg5
 
   - &cherry age1scn08ur8vv3r97k2l4q3j2jarq6gfpnz4n2mzx96hzvj8rxcefzq3ypl0z
 
