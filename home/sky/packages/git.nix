@@ -22,6 +22,7 @@
       ".idea"
       "changes.txt"
       "*freeze.png"
+      ".crush"
     ];
 
     attributes = [
