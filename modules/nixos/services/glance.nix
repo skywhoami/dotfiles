@@ -98,7 +98,7 @@ in
                     servers = [
                       {
                         type = "local";
-                        name = "cherry";
+                        name = "sage";
                         hide-swap = true;
                         mountpoints = {
                           "/boot" = {

@@ -3,11 +3,7 @@
     users = [ "sky" ];
     profiles.headless.enable = true;
     services = {
-      docker.enable = true;
       caddy.enable = true;
-      postgres.enable = true;
-      glance.enable = true;
-      pds.enable = true;
     };
     networking.tailscale.enable = true;
   };
@@ -33,11 +29,6 @@
   };
 
   services.caddy.virtualHosts = {
-    "skylar.sh" = {
-      extraConfig = ''
-        reverse_proxy 127.0.0.1:3000
-      '';
-    };
     "subnetbabe.cloud" = {
       extraConfig = ''
         reverse_proxy localhost:4321
