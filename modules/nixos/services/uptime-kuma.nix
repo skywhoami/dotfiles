@@ -27,7 +27,7 @@ in
         enable = true;
 
         settings = {
-          HOST = cfg.host;
+          HOST = "127.0.0.1";
           PORT = toString cfg.port;
         };
       };
