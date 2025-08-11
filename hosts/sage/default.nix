@@ -8,6 +8,7 @@
       pds.enable = true;
       docker.enable = true;
       glance.enable = true;
+      uptime-kuma.enable = true;
     };
     networking.tailscale.enable = true;
   };

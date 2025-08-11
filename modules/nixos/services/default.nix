@@ -5,5 +5,6 @@
     ./postgres.nix
     ./glance.nix
     ./pds.nix
+    ./uptime-kuma.nix
   ];
 }
