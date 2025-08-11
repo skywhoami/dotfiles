@@ -9,6 +9,7 @@
       docker.enable = true;
       glance.enable = true;
       uptime-kuma.enable = true;
+      postgres.enable = true;
     };
     networking.tailscale.enable = true;
   };
