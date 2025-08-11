@@ -114,7 +114,9 @@ navic.setup({
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    navic.attach(client, event.buf)
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, event.buf)
+    end
     vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
   end,
 })
@@ -209,6 +211,31 @@ local servers = {
   just = {},
 
   dockerls = {},
+
+  astro = {},
+
+  emmet_language_server = {
+    filetypes = {
+      "vue",
+      "astro",
+      "css",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "typescriptreact",
+    },
+  },
+
+  tailwindcss = {
+    filetypes = {
+      "vue",
+      "astro",
+      "javascriptreact",
+      "typescriptreact",
+      "html",
+      "css",
+    },
+  },
 }
 
 vim.diagnostic.config({

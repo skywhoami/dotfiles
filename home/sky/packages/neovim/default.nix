@@ -38,21 +38,23 @@
           dockerfile
           vue
           yaml
+          astro
         ]
       ))
     ];
     extraPackages = with pkgs; [
       ripgrep
       nil
-      emmet-language-server
       vtsls
       vue-language-server
       docker-language-server
       docker-compose-language-service
       yaml-language-server
       bash-language-server
-      tailwindcss-language-server
       lua-language-server
+      astro-language-server
+      tailwindcss-language-server
+      emmet-language-server
     ];
 
     extraLuaConfig = ''
