@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ pinentry-curses ];
+  sys.packages = { inherit (pkgs) pinentry-curses; };
   services.gpg-agent = {
     enable = true;
     pinentry.package = pkgs.pinentry-curses;

@@ -17,14 +17,14 @@
         "homebrew/homebrew-core" = pkgs.fetchFromGitHub {
           owner = "homebrew";
           repo = "homebrew-core";
-          rev = "db574cbe661e06a7a7cb9e9a50b5730a0fd2f2dd";
-          hash = "sha256-qw+KlfW6+kaaojvwXrPziGTuZBIsANo7iztc+nED9bI=";
+          rev = "1f4178b9e6d6a0e42c256e946d34f6c0f7cbc23c";
+          hash = "sha256-t9BpMrzPp74TGywKiOyHx4/0yw0iC241PF0CD0w1p80=";
         };
         "homebrew/homebrew-cask" = pkgs.fetchFromGitHub {
           owner = "homebrew";
           repo = "homebrew-cask";
-          rev = "fe151eb20497f0de52b26bbcf7c55aacaae3286b";
-          hash = "sha256-6icfTrqUldnW3pCeM4ClocNUbIrd2DjSfKHXqY0tIfc=";
+          rev = "e44dad7cb3c4c736c3b6994b8f10c00a0a5970c7";
+          hash = "sha256-SMAS5eVDsP9eDag+qsz+ORv7Xr7ZBHfvQaeZwrPv7Zo=";
         };
         "koekeishiya/homebrew-formulae" = pkgs.fetchFromGitHub {
           owner = "koekeishiya";

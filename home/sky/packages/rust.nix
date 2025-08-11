@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    rustc
-    cargo
-  ];
+  sys.packages = {
+    inherit (pkgs)
+      rustc
+      cargo
+      ;
+  };
 }
