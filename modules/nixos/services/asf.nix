@@ -23,6 +23,7 @@ in
       web-ui.enable = true;
       settings = {
         SteamOwnerID = 76561198950840617;
+        OptimizationMode = 1;
       };
       ipcSettings = {
         Kestrel = {
@@ -31,6 +32,7 @@ in
               Url = "http://*:1242";
             };
           };
+          KnownNetworks = [ "100.100.0.0/8" ];
         };
       };
       ipcPasswordFile = config.sops.secrets.asf.path;
