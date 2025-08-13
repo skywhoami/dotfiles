@@ -21,6 +21,9 @@ in
     services.archisteamfarm = {
       enable = true;
       web-ui.enable = true;
+      settings = {
+        SteamOwnerID = 76561198950840617;
+      };
       ipcSettings = {
         Kestrel = {
           Endpoints = {
