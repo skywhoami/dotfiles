@@ -21,6 +21,15 @@ in
     services.archisteamfarm = {
       enable = true;
       web-ui.enable = true;
+      ipcSettings = {
+        Kestrel = {
+          Endpoints = {
+            HTTP = {
+              Url = "http://*:1242";
+            };
+          };
+        };
+      };
       ipcPasswordFile = config.sops.secrets.asf.path;
     };
   };
