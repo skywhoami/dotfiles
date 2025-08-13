@@ -10,6 +10,7 @@
       glance.enable = true;
       uptime-kuma.enable = true;
       postgres.enable = true;
+      asf.enable = true;
     };
     networking.tailscale.enable = true;
   };

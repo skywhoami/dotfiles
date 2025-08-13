@@ -6,5 +6,6 @@
     ./glance.nix
     ./pds.nix
     ./uptime-kuma.nix
+    ./asf.nix
   ];
 }
