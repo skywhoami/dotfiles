@@ -17,6 +17,7 @@
     ./tmux.nix
     ./kitty
     ./crush
+    ./zen.nix
   ];
 
   sys.packages = {

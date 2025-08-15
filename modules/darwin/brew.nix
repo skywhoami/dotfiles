@@ -17,14 +17,14 @@
         "homebrew/homebrew-core" = pkgs.fetchFromGitHub {
           owner = "homebrew";
           repo = "homebrew-core";
-          rev = "1f4178b9e6d6a0e42c256e946d34f6c0f7cbc23c";
-          hash = "sha256-t9BpMrzPp74TGywKiOyHx4/0yw0iC241PF0CD0w1p80=";
+          rev = "b49e78f071d2c0274575b290f75a6c974346b160";
+          hash = "sha256-7VkBWf9OmtfOIN3HzpW2enES4aRIo4kbslSgwtDC8Io=";
         };
         "homebrew/homebrew-cask" = pkgs.fetchFromGitHub {
           owner = "homebrew";
           repo = "homebrew-cask";
-          rev = "e44dad7cb3c4c736c3b6994b8f10c00a0a5970c7";
-          hash = "sha256-SMAS5eVDsP9eDag+qsz+ORv7Xr7ZBHfvQaeZwrPv7Zo=";
+          rev = "893c6b440cfe3ac6fe85b53cbc301d980904bdfc";
+          hash = "sha256-aeXOWBlL6uBmm52iIPLEhGrW8o/eKbhKd84lyXJnscg=";
         };
         "koekeishiya/homebrew-formulae" = pkgs.fetchFromGitHub {
           owner = "koekeishiya";
@@ -77,7 +77,7 @@
         "vesktop"
         "proton-mail"
         "raycast"
-        "zen"
+        "zen@twilight"
         "proton-drive"
       ];
     };
