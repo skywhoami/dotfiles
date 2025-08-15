@@ -27,7 +27,7 @@ let
           "https://apple.com"
           "https://instagram.com"
           "https://steampowered.com"
-          "http://100.100.69.99"
+          "http://100.100.20.1"
           "https://porkbun.com"
           "https://ovh.com"
           "https://tailscale.com"
@@ -55,7 +55,7 @@ let
         EmailTracking = true;
       };
       HttpsOnlyMode = "force_enabled";
-      HttpAllowlist = [ "http://100.100.69.99" ];
+      HttpAllowlist = [ "http://100.100.20.1" ];
       SkipTermsOfUse = true;
       Extensions = {
         Install = [

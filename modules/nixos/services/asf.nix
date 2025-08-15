@@ -32,7 +32,7 @@ in
               Url = "http://*:1242";
             };
           };
-          KnownNetworks = [ "100.100.0.0/8" ];
+          KnownNetworks = [ "100.100.0.0/16" ];
         };
       };
       ipcPasswordFile = config.sops.secrets.asf.path;
