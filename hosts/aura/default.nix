@@ -3,7 +3,10 @@
     users = [ "sky" ];
     profiles.headless.enable = true;
     services = {
-      caddy.enable = true;
+      caddy = {
+        enable = true;
+        domain = "subnetbabe.cloud";
+      };
       pds.enable = true;
     };
     networking.tailscale.enable = true;
