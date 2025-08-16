@@ -29,7 +29,7 @@ in
           "wheel"
           "nix"
         ]
-        ++ config.sys.services.docker.enable [ "docker" ];
+        ++ (if config.sys.services.docker.enable then [ "docker" ] else [ ]);
       })
     ]
   );
