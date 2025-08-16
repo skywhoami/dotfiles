@@ -18,7 +18,7 @@ in
 
     hostname = mkOption {
       type = str;
-      default = "bsky.skylar.sh";
+      default = "bsky.subnetbabe.cloud";
     };
 
     port = mkOption {
