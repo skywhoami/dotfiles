@@ -1,33 +1,29 @@
-{ config, ... }:
 {
   sys = {
     users = [ "sky" ];
     profiles.headless.enable = true;
     services = {
       caddy.enable = true;
-      docker.enable = true;
-      glance.enable = true;
-      uptime-kuma.enable = true;
-      postgres.enable = true;
-      asf.enable = true;
+      pds.enable = true;
     };
     networking.tailscale.enable = true;
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/05b262cf-aa6c-4559-be94-446d7904bfcc";
+    device = "/dev/sda1";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/DFFA-971E";
+    device = "/dev/disk/by-uuid/7763-8830";
     fsType = "vfat";
   };
 
   boot = {
     loader.grub = {
-      enable = true;
-      device = "/dev/sda";
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
     };
 
     initrd = {
@@ -35,7 +31,6 @@
         "ata_piix"
         "uhci_hcd"
         "xen_blkfront"
-        "vmw_pvscsi"
       ];
       kernelModules = [ "nvme" ];
     };
@@ -50,14 +45,6 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIyMCwBcRVn8QdhGrI/2PWY6g9cIFEGphXBG2T3FHg5"
     ];
-  };
-
-  services.caddy.virtualHosts = {
-    ${config.sys.services.caddy.domain} = {
-      extraConfig = ''
-        reverse_proxy 127.0.0.1:3000
-      '';
-    };
   };
 
   system.stateVersion = "25.05";
