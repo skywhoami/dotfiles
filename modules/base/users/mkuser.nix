@@ -16,6 +16,8 @@ in
   users.users = genAttrs config.sys.users (
     name:
     mergeAttrsList [
+      { shell = "/run/current-system/sw/bin/zsh"; }
+
       (optionalAttrs (_class == "darwin") {
         home = "/Users/${name}";
       })
@@ -24,7 +26,6 @@ in
         home = "/home/${name}";
         uid = mkDefault 1000;
         isNormalUser = true;
-        shell = "/run/current-system/sw/bin/zsh";
         extraGroups = [
           "wheel"
           "nix"
