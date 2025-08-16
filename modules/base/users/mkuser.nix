@@ -16,8 +16,6 @@ in
   users.users = genAttrs config.sys.users (
     name:
     mergeAttrsList [
-      { shell = "/run/current-system/sw/bin/zsh"; }
-
       (optionalAttrs (_class == "darwin") {
         home = "/Users/${name}";
       })
@@ -26,11 +24,7 @@ in
         home = "/home/${name}";
         uid = mkDefault 1000;
         isNormalUser = true;
-        extraGroups = [
-          "wheel"
-          "nix"
-        ]
-        ++ (if config.sys.services.docker.enable then [ "docker" ] else [ ]);
+        extraGroups = [ "wheel" ] ++ (if config.sys.services.docker.enable then [ "docker" ] else [ ]);
       })
     ]
   );
