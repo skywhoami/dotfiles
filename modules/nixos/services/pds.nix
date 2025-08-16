@@ -18,7 +18,7 @@ in
 
     hostname = mkOption {
       type = str;
-      default = "pds.subnetbabe.cloud";
+      default = "bsky.skylar.sh";
     };
 
     port = mkOption {
@@ -46,7 +46,7 @@ in
         settings = {
           PDS_PORT = cfg.port;
           PDS_HOSTNAME = cfg.hostname;
-          PDS_CRAWLERS = "https://bsky.network,https://relay.cerulea.blue";
+          PDS_CRAWLERS = "https://bsky.network";
         };
       };
 
