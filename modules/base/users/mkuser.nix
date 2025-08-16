@@ -19,14 +19,17 @@ in
       (optionalAttrs (_class == "darwin") {
         home = "/Users/${name}";
       })
+
       (optionalAttrs (_class == "nixos") {
         home = "/home/${name}";
         uid = mkDefault 1000;
         isNormalUser = true;
+        shell = "/run/current-system/sw/bin/zsh";
         extraGroups = [
           "wheel"
-          "docker"
-        ];
+          "nix"
+        ]
+        ++ config.sys.services.docker.enable [ "docker" ];
       })
     ]
   );
